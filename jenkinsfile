@@ -1,8 +1,56 @@
-pipeline
-{
- agent any
-  stages{
-    stage1{
-  }
-  }
-
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'checkout...'
+                //  checkout steps (git checkout)
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                // build steps (mvn clean package maven,gradle
+                                npm build)
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                //  test steps (mvn test selenium,junit)
+            }
+        }
+        
+         stage('scan') {
+            steps {
+                echo 'scanning...'
+                // scan steps (sonar qube)
+            }
+         }
+          stage('artifactory') {
+              steps {
+                echo 'artifactory...'
+                // artifactory steps (jfrog)
+            }
+         }
+        
+        stage('Deploy to Dev Server') {
+            steps {
+                echo 'Deploying to Dev server...'
+                //  deployment steps 
+            }
+        }
+        stage('Deploy to Test Server') {
+            steps {
+                echo 'Deploying to test server...'
+                //  deployment steps 
+            }
+          stage('Deploy to Prod Server') {
+            steps {
+                echo 'Deploying to Prod server...'
+                //  deployment steps 
+            }
+    }
